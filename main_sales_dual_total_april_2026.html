@@ -1,0 +1,175 @@
+
+<style>
+.metric-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 1.5rem; }
+.metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; }
+.metric-label { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 4px; }
+.metric-value { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.metric-sub { font-size: 12px; color: var(--color-text-secondary); margin: 4px 0 0; }
+.section-title { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 10px; letter-spacing: 0.04em; text-transform: uppercase; }
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.bar-label { font-size: 13px; color: var(--color-text-primary); width: 190px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { flex: 1; height: 8px; background: var(--color-background-secondary); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; }
+.bar-val { font-size: 12px; color: var(--color-text-secondary); width: 55px; text-align: right; flex-shrink: 0; }
+.day-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+.day-table th { color: var(--color-text-secondary); font-weight: 500; padding: 6px 8px; text-align: left; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.day-table td { padding: 6px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); }
+.day-table tr:last-child td { border-bottom: none; }
+.day-table td.num { text-align: right; }
+.real { color: #D85A30; font-weight: 500; }
+.divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 1.5rem 0; }
+</style>
+
+<h2 class="sr-only">สรุปยอดขาย เดือนเมษายน 2569 พร้อมยอดตามระบบและยอดจริง</h2>
+
+<div style="padding: 1rem 0;">
+  <div class="metric-grid">
+    <div class="metric">
+      <p class="metric-label">ยอดจริงทั้งเดือน</p>
+      <p class="metric-value">41,402</p>
+      <p class="metric-sub">บาท (23 วัน)</p>
+    </div>
+    <div class="metric">
+      <p class="metric-label">เงินสด</p>
+      <p class="metric-value">22,650</p>
+      <p class="metric-sub">54.7% ของยอดรวม</p>
+    </div>
+    <div class="metric">
+      <p class="metric-label">โอน</p>
+      <p class="metric-value">18,752</p>
+      <p class="metric-sub">45.3% ของยอดรวม</p>
+    </div>
+  </div>
+
+  <div class="metric-grid" style="grid-template-columns: repeat(2,1fr);">
+    <div class="metric">
+      <p class="metric-label">ยอดเฉลี่ย/วัน</p>
+      <p class="metric-value">1,800</p>
+      <p class="metric-sub">บาท/วัน</p>
+    </div>
+    <div class="metric">
+      <p class="metric-label">วันขายดีสุด</p>
+      <p class="metric-value">20 เม.ย.</p>
+      <p class="metric-sub">3,100 บาท</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <p class="section-title">สินค้าขายดีสุด (top 10 ตามยอดเงิน)</p>
+  <div id="bars"></div>
+
+  <hr class="divider">
+
+  <p class="section-title">ยอดขายรายวัน</p>
+  <div style="position: relative; width: 100%; height: 220px; margin-bottom: 1rem;">
+    <canvas id="dayChart" role="img" aria-label="กราฟแท่งยอดขายรายวัน เดือนเมษายน 2569">ยอดขายแต่ละวัน 1-23 เมษายน 2569</canvas>
+  </div>
+
+  <table class="day-table">
+    <thead>
+      <tr>
+        <th style="width:18%">วันที่</th>
+        <th style="width:18%;text-align:right">เงินสด</th>
+        <th style="width:18%;text-align:right">โอน</th>
+        <th style="width:23%;text-align:right">ยอดตามระบบ</th>
+        <th style="width:23%;text-align:right">ยอดจริง</th>
+      </tr>
+    </thead>
+    <tbody id="dayRows"></tbody>
+    <tfoot>
+      <tr style="font-weight:500; border-top: 1px solid var(--color-border-tertiary);">
+        <td style="padding:8px 8px 4px">รวมทั้งหมด</td>
+        <td class="num" style="padding:8px 8px 4px">22,650</td>
+        <td class="num" style="padding:8px 8px 4px">18,752</td>
+        <td class="num" style="padding:8px 8px 4px">41,207</td>
+        <td class="num real" style="padding:8px 8px 4px">41,402</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const products = [
+  {name:'Black Diamond', val:4326},
+  {name:'Super Boof', val:4261},
+  {name:'Runtz Layer Cake', val:2130},
+  {name:'Platinum', val:1890},
+  {name:'เศษดอก Black Diamond', val:1839},
+  {name:'Runtz Muffin', val:1796},
+  {name:'Oreo Big Stum', val:1750},
+  {name:'Black Berry Oreo Big Stuff', val:1690},
+  {name:'Miami Mango Indoor', val:1350},
+  {name:'ICC', val:1300},
+];
+
+const dailyData = [
+  {d:'1 เม.ย.', cash:1240, tr:1395, sys:2530, real:2635},
+  {d:'2 เม.ย.', cash:710, tr:820, sys:1523, real:1530},
+  {d:'3 เม.ย.', cash:865, tr:620, sys:1381, real:1485},
+  {d:'4 เม.ย.', cash:885, tr:790, sys:1674, real:1675},
+  {d:'5 เม.ย.', cash:1490, tr:1325, sys:2812, real:2815},
+  {d:'6 เม.ย.', cash:1360, tr:942, sys:2197, real:2302},
+  {d:'7 เม.ย.', cash:505, tr:975, sys:1482, real:1480},
+  {d:'8 เม.ย.', cash:1665, tr:40, sys:1711, real:1705},
+  {d:'9 เม.ย.', cash:1000, tr:560, sys:1559, real:1560},
+  {d:'10 เม.ย.', cash:530, tr:120, sys:646, real:650},
+  {d:'11 เม.ย.', cash:1060, tr:885, sys:1945, real:1945},
+  {d:'12 เม.ย.', cash:415, tr:720, sys:1244, real:1135},
+  {d:'13 เม.ย.', cash:1525, tr:1015, sys:2537, real:2540},
+  {d:'14 เม.ย.', cash:995, tr:1930, sys:2995, real:2925},
+  {d:'15 เม.ย.', cash:865, tr:400, sys:1251, real:1265},
+  {d:'16 เม.ย.', cash:670, tr:0, sys:666, real:670},
+  {d:'17 เม.ย.', cash:470, tr:570, sys:1038, real:1040},
+  {d:'18 เม.ย.', cash:880, tr:1040, sys:1915, real:1920},
+  {d:'19 เม.ย.', cash:1095, tr:630, sys:1734, real:1725},
+  {d:'20 เม.ย.', cash:560, tr:2540, sys:3077, real:3100},
+  {d:'21 เม.ย.', cash:790, tr:470, sys:1259, real:1260},
+  {d:'22 เม.ย.', cash:1885, tr:445, sys:2326, real:2330},
+  {d:'23 เม.ย.', cash:1190, tr:520, sys:1709, real:1710},
+];
+
+const colors = ['#534AB7','#3266ad','#1D9E75','#D85A30','#BA7517','#993556','#639922','#0F6E56','#185FA5','#3C3489'];
+const maxVal = products[0].val;
+const barsEl = document.getElementById('bars');
+products.forEach((p,i) => {
+  const pct = Math.round(p.val / maxVal * 100);
+  barsEl.innerHTML += `<div class="bar-row">
+    <span class="bar-label" title="${p.name}">${p.name}</span>
+    <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${colors[i]};"></div></div>
+    <span class="bar-val">${p.val.toLocaleString()}</span>
+  </div>`;
+});
+
+const tbody = document.getElementById('dayRows');
+dailyData.forEach(r => {
+  tbody.innerHTML += `<tr>
+    <td>${r.d}</td>
+    <td class="num">${r.cash.toLocaleString()}</td>
+    <td class="num">${r.tr.toLocaleString()}</td>
+    <td class="num">${r.sys.toLocaleString()}</td>
+    <td class="num real">${r.real.toLocaleString()}</td>
+  </tr>`;
+});
+
+new Chart(document.getElementById('dayChart'), {
+  type: 'bar',
+  data: {
+    labels: dailyData.map(r => r.d),
+    datasets: [
+      {label:'เงินสด', data: dailyData.map(r=>r.cash), backgroundColor:'#534AB7'},
+      {label:'โอน', data: dailyData.map(r=>r.tr), backgroundColor:'#AFA9EC'},
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { stacked: true, ticks: { font:{size:9}, maxRotation: 45, autoSkip: false } },
+      y: { stacked: true, ticks: { font:{size:11} } }
+    }
+  }
+});
+</script>
