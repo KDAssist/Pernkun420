@@ -22,11 +22,10 @@
   
 }
 
-@media (max-width: 600px) {
-    body {
-        background-color: lightblue; /* สีพื้นหลังจะเปลี่ยนเมื่อเป็นจอเล็ก */
-    }
+@media (max-width: 768px) {
+  /* ใส่สไตล์สำหรับมือถือที่นี่ */
 }
+
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
