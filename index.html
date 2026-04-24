@@ -211,6 +211,12 @@ const acc = [
   {name:'กะปุกเก็บเนื้อ สีใส', start:1, rem:1, note:''},
 ].sort((a,b) => b.rem - a.rem);
 
+
+    <button onclick="window.history.back()" style="padding: 10px 20px; cursor: pointer;">
+  ⬅ ย้อนกลับ
+</button>
+
+    
 function badge(rem) {
   if (rem <= 0) return '<span class="badge out">หมด</span>';
   if (rem < 5) return '<span class="badge low">เหลือน้อย</span>';
