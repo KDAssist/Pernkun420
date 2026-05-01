@@ -1,32 +1,18 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .box {
-            width: 100%; /* แสดงเต็มจอในมือถือ */
-            background-color: lightblue;
-            padding: 20px;
-        }
-        
-        /* ปรับสไตล์เมื่อหน้าจอใหญ่กว่า 768px (Tablet/Desktop) */
-        @media (min-width: 768px) {
-            .box {
-                width: 50%; /* แสดงครึ่งจอ */
-                margin: auto;
-            }
-        }
-    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>เพลินกัญ พังโดน — สรุปเดือนเมษายน 2569</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#0b0d12; --bg2:#111318; --bg3:#181c24; --bg4:#1e232e;
   --border:#232838; --border2:#2d3347;
-  --text:#e4e7f0; --text2:#ffffff; --text3:#ffffff;
-  --green:#00ff73; --green-d:rgba(76, 152, 0, 0.1);
+  --text:#ffffff; --text2:#00ff11; --text3:#e2e2e2;
+  --green:#00ff2f; --green-d:rgba(76, 152, 0, 0.1);
   --red:#ff4d6d; --red-d:rgba(255,77,109,.1);
   --yellow:#fbbf24; --yellow-d:rgba(251,191,36,.1);
   --blue:#4f8ef7;
@@ -508,8 +494,8 @@ new Chart(document.getElementById('dayChart'),{
   data:{
     labels:daily.map(r=>r.d),
     datasets:[
-      {label:'เงินสด',data:daily.map(r=>r.c),backgroundColor:'#00d97e',borderRadius:3},
-      {label:'โอน',data:daily.map(r=>r.t),backgroundColor:'#1a4d36',borderRadius:3},
+      {label:'เงินสด',data:daily.map(r=>r.c),backgroundColor:'#c27ba0',borderRadius:3},
+      {label:'โอน',data:daily.map(r=>r.t),backgroundColor:'#741b47',borderRadius:3},
     ]
   },
   options:{
