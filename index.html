@@ -2,7 +2,26 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box {
+            width: 100%; /* แสดงเต็มจอในมือถือ */
+            background-color: lightblue;
+            padding: 20px;
+        }
+        
+        /* ปรับสไตล์เมื่อหน้าจอใหญ่กว่า 768px (Tablet/Desktop) */
+        @media (min-width: 768px) {
+            .box {
+                width: 50%; /* แสดงครึ่งจอ */
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">เนื้อหาปรับตามขนาดหน้าจอ</div>
+</body>
 <title>เพลินกัญ พังโดน — สรุปเดือนเมษายน 2569</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
