@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>เพลินกัญ พังโดน — สรุปเดือนเมษายน 2569</title>
@@ -9,10 +11,10 @@
 :root {
   --bg:#0b0d12; --bg2:#111318; --bg3:#181c24; --bg4:#1e232e;
   --border:#232838; --border2:#2d3347;
-  --text:#e4e7f0; --text2:#32ff43; --text3:#ffffff;
-  --green:#00ff48; --green-d:rgba(0,217,126,.1);
-  --red:#ff002f; --red-d:rgba(255,77,109,.1);
-  --yellow:#ffb700; --yellow-d:rgba(255, 183, 0, 0.1);
+  --text:#e4e7f0; --text2:#ffffff; --text3:#ffffff;
+  --green:#00ff73; --green-d:rgba(76, 152, 0, 0.1);
+  --red:#ff4d6d; --red-d:rgba(255,77,109,.1);
+  --yellow:#fbbf24; --yellow-d:rgba(251,191,36,.1);
   --blue:#4f8ef7;
   --mono:'IBM Plex Mono',monospace;
   --sans:'IBM Plex Sans Thai',sans-serif;
@@ -74,8 +76,8 @@ tfoot td{font-weight:600;background:var(--bg3);border-top:1px solid var(--border
 
 /* ── RANK ── */
 .rk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;background:var(--bg4);color:var(--text3);}
-.rk.g1{background:#7c5c00;color:#fbbf24;}
-.rk.g2{background:#363636;color:#c0c0c0;}
+.rk.g1{background:#7c5c00;color:#ffb700;}
+.rk.g2{background:#2580ff;color:#ffffff;}
 .rk.g3{background:#3d1f0a;color:#cd7f32;}
 
 /* ── MG GRID ── */
@@ -126,12 +128,28 @@ canvas{width:100%!important;}
 <div class="container">
 
   <!-- STAT BAR -->
-  <div class="stat-grid">
-    <div class="stat"><div class="stat-label">ยอดจริงกัญชา</div><div class="stat-val g">54,642</div><div class="stat-sub">บาท (30 วัน)</div></div>
-    <div class="stat"><div class="stat-label">ยอดขายขนม</div><div class="stat-val">2,342</div><div class="stat-sub">บาท (30 วัน)</div></div>
-    <div class="stat"><div class="stat-label">ยอดรวมทั้งหมด</div><div class="stat-val g">56,984</div><div class="stat-sub">บาท</div></div>
-    <div class="stat"><div class="stat-label">เงินสด</div><div class="stat-val">30,185</div><div class="stat-sub">55.3%</div></div>
-    <div class="stat"><div class="stat-label">โอน</div><div class="stat-val">24,457</div><div class="stat-sub">44.7%</div></div>
+  <div style="margin-bottom:8px;">
+    <div class="stitle" style="font-size: 24px;" >🌿 รายการขายเนื้อ (กัญชา + อุปกรณ์)</div>
+    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:12px;">
+      <div class="stat"><div class="stat-label">ยอดจริงเนื้อ</div><div class="stat-val g">54,642</div><div class="stat-sub">บาท</div></div>
+      <div class="stat"><div class="stat-label">ยอดตามระบบเนื้อ</div><div class="stat-val">54,206</div><div class="stat-sub">บาท</div></div>
+      <div class="stat"><div class="stat-label">เงินสด (เนื้อ)</div><div class="stat-val">30,185</div><div class="stat-sub">55.3% ของยอดจริง</div></div>
+      <div class="stat"><div class="stat-label">โอน (เนื้อ)</div><div class="stat-val">24,457</div><div class="stat-sub">44.7% ของยอดจริง</div></div>
+    </div>
+    <div class="stitle"style="font-size: 24px;">🍬 รายการขายน้ำและขนม</div>
+    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);">
+      <div class="stat"><div class="stat-label">ยอดจริงขนม/น้ำ</div><div class="stat-val g">2,342</div><div class="stat-sub">บาท</div></div>
+      <div class="stat"><div class="stat-label">ยอดตามระบบขนม/น้ำ</div><div class="stat-val">2,306</div><div class="stat-sub">บาท</div></div>
+      <div class="stat"><div class="stat-label">เงินสด (ขนม/น้ำ)</div><div class="stat-val">1,869</div><div class="stat-sub">79.8% ของยอดจริง</div></div>
+      <div class="stat"><div class="stat-label">โอน (ขนม/น้ำ)</div><div class="stat-val">473</div><div class="stat-sub">20.2% ของยอดจริง</div></div>
+    </div>
+
+    <div class="stitle" style="font-size: 24px;" >ยอดรวม</div> 
+  
+<div class="stat-grid" style="grid-template-columns:repeat(4,1fr);">
+<div class="stat"><div class="stat-label">ยอดจริงขนม/น้ำ - ยอดจริงของเนื้อ</div><div class="stat-val g">56,984</div><div class="stat-sub">บาท</div></div>
+<div class="stat"><div class="stat-label">ยอดตามระบบขนม/น้ำ - ยอดตามระบบเนื้อ</div><div class="stat-val g">56,512</div><div class="stat-sub">บาท</div></div>
+
   </div>
 
   <!-- TABS -->
@@ -536,6 +554,8 @@ function showTab(id,el){
   document.getElementById(id).classList.add('active');
   el.classList.add('active');
 }
+
+
 </script>
 </body>
 </html>
