@@ -1,218 +1,299 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เพลินกัญ พังโดน — สรุปเดือนเมษายน 2569</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+:root {
+  --bg:#0b0d12; --bg2:#111318; --bg3:#181c24; --bg4:#1e232e;
+  --border:#232838; --border2:#2d3347;
+  --text:#e4e7f0; --text2:#8b91a8; --text3:#454d65;
+  --green:#00d97e; --green-d:rgba(0,217,126,.1);
+  --red:#ff4d6d; --red-d:rgba(255,77,109,.1);
+  --yellow:#fbbf24; --yellow-d:rgba(251,191,36,.1);
+  --blue:#4f8ef7;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans Thai',sans-serif;
+  --r:8px;
+}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Sarabun',sans-serif;}
-.tabs{display:flex;gap:4px;padding:4px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:10px;margin-bottom:16px;flex-wrap:wrap;}
-.tab{flex:1;min-width:100px;background:transparent;border:none;border-radius:7px;color:var(--color-text-secondary);font-size:13px;font-weight:500;padding:8px 10px;cursor:pointer;transition:all .15s;text-align:center;}
-.tab:hover{color:var(--color-text-primary);background:var(--color-background-tertiary,#1f2435);}
-.tab.active{background:var(--color-background-primary,#0f1117);border:1px solid var(--color-border-secondary);color:#2ecc8a;}
-.sec{display:none;}.sec.active{display:block;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.6;min-height:100vh;}
 
-/* metric grid */
-.mg{display:grid;gap:10px;margin-bottom:16px;}
+/* ── HEADER ── */
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);}
+.logo-name{font-weight:700;font-size:15px;letter-spacing:.02em;}
+.logo-sub{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:-2px;}
+.header-badge{background:var(--bg3);border:1px solid var(--border);border-radius:20px;font-family:var(--mono);font-size:11px;color:var(--text3);padding:4px 12px;}
+
+/* ── CONTAINER ── */
+.container{max-width:1280px;margin:0 auto;padding:28px 24px;}
+
+/* ── STAT CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px;}
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;transition:border-color .2s;}
+.stat:hover{border-color:var(--border2);}
+.stat-label{font-size:10px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.stat-val{font-size:26px;font-weight:700;line-height:1;color:var(--text);}
+.stat-val.g{color:var(--green);} .stat-val.r{color:var(--red);} .stat-val.y{color:var(--yellow);}
+.stat-sub{font-size:11px;color:var(--text3);margin-top:5px;}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:4px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:4px;margin-bottom:20px;}
+.tab-btn{flex:1;background:transparent;border:none;border-radius:6px;color:var(--text3);font-family:var(--sans);font-size:13px;font-weight:500;padding:9px 12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn:hover{color:var(--text2);background:var(--bg3);}
+.tab-btn.active{background:var(--bg3);color:var(--green);border:1px solid var(--border2);}
+.sec{display:none;} .sec.active{display:block;}
+
+/* ── SECTION TITLE ── */
+.stitle{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 10px;}
+.stitle::before{content:'';width:3px;height:12px;background:var(--green);border-radius:2px;flex-shrink:0;}
+
+/* ── TABLE ── */
+.tw{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:20px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead tr{background:var(--bg3);}
+th{padding:10px 14px;text-align:left;color:var(--text3);font-weight:500;font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;border-bottom:1px solid var(--border);}
+th.r,td.r{text-align:right;}
+td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--bg3);}
+tfoot td{font-weight:600;background:var(--bg3);border-top:1px solid var(--border2);}
+.mono{font-family:var(--mono);font-size:12px;}
+.neg{color:var(--red);}
+
+/* ── BADGES ── */
+.bd{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;letter-spacing:.03em;}
+.bd.ok{background:var(--green-d);color:var(--green);}
+.bd.low{background:var(--yellow-d);color:var(--yellow);}
+.bd.out{background:var(--red-d);color:var(--red);}
+
+/* ── RANK ── */
+.rk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;background:var(--bg4);color:var(--text3);}
+.rk.g1{background:#7c5c00;color:#fbbf24;}
+.rk.g2{background:#363636;color:#c0c0c0;}
+.rk.g3{background:#3d1f0a;color:#cd7f32;}
+
+/* ── MG GRID ── */
+.mg{display:grid;gap:12px;margin-bottom:20px;}
+.mg5{grid-template-columns:repeat(5,1fr);}
 .mg4{grid-template-columns:repeat(4,1fr);}
 .mg3{grid-template-columns:repeat(3,1fr);}
 .mg2{grid-template-columns:repeat(2,1fr);}
-.mc{background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:8px;padding:12px 14px;}
-.ml{font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase;}
-.mv{font-size:22px;font-weight:600;color:var(--color-text-primary);}
-.ms{font-size:11px;color:var(--color-text-secondary);margin-top:3px;}
-.mv.g{color:#2ecc8a;}.mv.r{color:#ff5f6d;}.mv.y{color:#f5c842;}
+.mc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;}
+.ml{font-size:10px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
+.mv{font-size:22px;font-weight:700;color:var(--text);line-height:1;}
+.mv.g{color:var(--green);} .mv.r{color:var(--red);}
+.ms{font-size:11px;color:var(--text3);margin-top:4px;}
 
-/* table */
-.tw{background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;margin-bottom:16px;}
-.st{width:100%;border-collapse:collapse;font-size:12.5px;}
-.st thead tr{background:var(--color-background-tertiary,#1a1e2e);border-bottom:1px solid var(--color-border-tertiary);}
-.st th{padding:9px 12px;text-align:left;color:var(--color-text-secondary);font-weight:500;font-size:11px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;}
-.st th.r,.st td.r{text-align:right;font-variant-numeric:tabular-nums;}
-.st td{padding:9px 12px;border-bottom:1px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:middle;}
-.st tr:last-child td{border-bottom:none;}
-.st tr:hover td{background:var(--color-background-tertiary,#1a1e2e);}
-.st tfoot td{font-weight:600;background:var(--color-background-tertiary,#1a1e2e);border-top:1px solid var(--color-border-secondary);}
+/* ── BAR CHART ── */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;}
+.bar-label{font-size:12px;color:var(--text);width:210px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.bar-track{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;}
+.bar-val{font-size:11px;color:var(--text3);font-family:var(--mono);width:80px;text-align:right;flex-shrink:0;}
 
-/* rank badge */
-.rk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;background:var(--color-background-tertiary,#252a3a);color:var(--color-text-secondary);}
-.rk.g1{background:#D4AF37;color:#000;}.rk.g2{background:#C0C0C0;color:#000;}.rk.g3{background:#CD7F32;color:#fff;}
+/* ── DAILY CHART ── */
+.chart-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:20px;}
+canvas{width:100%!important;}
 
-/* badge */
-.bd{display:inline-block;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500;}
-.bd.ok{background:#0d3322;color:#2ecc8a;}.bd.low{background:#3d2800;color:#f5c842;}.bd.out{background:#2d1a1a;color:#ff5f6d;}
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
 
-/* section title */
-.stitle{font-size:12px;font-weight:600;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 8px;display:flex;align-items:center;gap:6px;}
-.stitle::before{content:'';display:block;width:3px;height:14px;border-radius:2px;background:#2ecc8a;}
-
-/* bar chart */
-.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
-.bar-label{font-size:12px;color:var(--color-text-primary);width:200px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.bar-track{flex:1;height:7px;background:var(--color-background-tertiary,#1f2435);border-radius:4px;overflow:hidden;}
-.bar-fill{height:100%;border-radius:4px;transition:width .4s ease;}
-.bar-val{font-size:11px;color:var(--color-text-secondary);width:70px;text-align:right;flex-shrink:0;}
-
-.neg{color:#ff5f6d;}.divider{border:none;border-top:1px solid var(--color-border-tertiary);margin:14px 0;}
+@media(max-width:900px){.stat-grid{grid-template-columns:repeat(3,1fr);}.tabs{flex-wrap:wrap;}.tab-btn{flex:none;min-width:calc(50% - 4px);}}
+@media(max-width:600px){.stat-grid{grid-template-columns:repeat(2,1fr);}.mg4,.mg3{grid-template-columns:repeat(2,1fr);}}
 </style>
+</head>
+<body>
 
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<div style="padding:1rem 0;">
-<div class="tabs">
-  <button class="tab active" onclick="showTab('sales',this)">📊 ยอดขาย</button>
-  <button class="tab" onclick="showTab('rank',this)">🏆 อันดับสินค้า</button>
-  <button class="tab" onclick="showTab('inv',this)">📦 คลังกัญชา</button>
-  <button class="tab" onclick="showTab('snack',this)">🍬 คลังขนม</button>
-</div>
-
-<!-- ════════ TAB 1: ยอดขาย ════════ -->
-<div class="sec active" id="sales">
-  <div class="mg mg4">
-    <div class="mc"><div class="ml">ยอดจริงทั้งเดือน</div><div class="mv g">54,642</div><div class="ms">บาท (30 วัน)</div></div>
-    <div class="mc"><div class="ml">เงินสด</div><div class="mv">30,185</div><div class="ms">55.3% ของยอดรวม</div></div>
-    <div class="mc"><div class="ml">โอน</div><div class="mv">24,457</div><div class="ms">44.7% ของยอดรวม</div></div>
-    <div class="mc"><div class="ml">เฉลี่ย/วัน</div><div class="mv">1,821</div><div class="ms">บาท/วัน</div></div>
+<header class="header">
+  <div class="logo">
+    <div class="logo-dot"></div>
+    <div>
+      <div class="logo-name">เพลินกัญ พังโดน</div>
+      <div class="logo-sub">STOCK DASHBOARD</div>
+    </div>
   </div>
-  <div class="mg mg3">
-    <div class="mc"><div class="ml">ยอดขายขนม</div><div class="mv">2,342</div><div class="ms">บาท (30 วัน)</div></div>
-    <div class="mc"><div class="ml">ยอดรวมทั้งสอง</div><div class="mv g">56,984</div><div class="ms">บาท</div></div>
-    <div class="mc"><div class="ml">วันขายดีสุด</div><div class="mv">20 เม.ย.</div><div class="ms">3,100 บาท</div></div>
-  </div>
-  <div class="stitle">ยอดขายรายวัน (ยอดจริง)</div>
-  <div class="tw"><table class="st">
-    <thead><tr>
-      <th>วันที่</th><th class="r">เงินสด</th><th class="r">โอน</th><th class="r">ยอดจริง</th>
-    </tr></thead>
-    <tbody id="dailyBody"></tbody>
-    <tfoot><tr>
-      <td>รวมทั้งหมด</td><td class="r">30,185</td><td class="r">24,457</td><td class="r">54,642</td>
-    </tr></tfoot>
-  </table></div>
-</div>
+  <div class="header-badge">เมษายน 2569</div>
+</header>
 
-<!-- ════════ TAB 2: อันดับสินค้า ════════ -->
-<div class="sec" id="rank">
-  <div class="mg mg2">
-    <div class="mc"><div class="ml">สินค้าขายดีสุด (ยอดเงิน)</div><div class="mv" style="font-size:16px">Super Boof Indoor</div><div class="ms">5,161 บาท</div></div>
-    <div class="mc"><div class="ml">สินค้าขายดีสุด (จำนวน)</div><div class="mv" style="font-size:16px">Super Boof Indoor</div><div class="ms">120.22 G</div></div>
+<div class="container">
+
+  <!-- STAT BAR -->
+  <div class="stat-grid">
+    <div class="stat"><div class="stat-label">ยอดจริงกัญชา</div><div class="stat-val g">54,642</div><div class="stat-sub">บาท (30 วัน)</div></div>
+    <div class="stat"><div class="stat-label">ยอดขายขนม</div><div class="stat-val">2,342</div><div class="stat-sub">บาท (30 วัน)</div></div>
+    <div class="stat"><div class="stat-label">ยอดรวมทั้งหมด</div><div class="stat-val g">56,984</div><div class="stat-sub">บาท</div></div>
+    <div class="stat"><div class="stat-label">เงินสด</div><div class="stat-val">30,185</div><div class="stat-sub">55.3%</div></div>
+    <div class="stat"><div class="stat-label">โอน</div><div class="stat-val">24,457</div><div class="stat-sub">44.7%</div></div>
   </div>
 
-  <div class="stitle">🌿 Indoor — อันดับตามยอดเงิน</div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>#</th><th>ชื่อสินค้า</th><th class="r">จำนวน (G)</th><th class="r">ยอดเงิน (บ.)</th></tr></thead>
-    <tbody id="indoorRank"></tbody>
-  </table></div>
-
-  <div class="stitle">🌳 Outdoor — อันดับตามยอดเงิน</div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>#</th><th>ชื่อสินค้า</th><th class="r">จำนวน (G)</th><th class="r">ยอดเงิน (บ.)</th></tr></thead>
-    <tbody id="outdoorRank"></tbody>
-  </table></div>
-
-  <div class="stitle">✂️ ทริม/เศษ — อันดับตามยอดเงิน</div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>#</th><th>ชื่อสินค้า</th><th class="r">จำนวน (G)</th><th class="r">ยอดเงิน (บ.)</th></tr></thead>
-    <tbody id="trimRank"></tbody>
-  </table></div>
-
-  <div class="stitle">🍬 ขนม/เครื่องดื่ม — อันดับตามยอดเงิน</div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>#</th><th>ชื่อสินค้า</th><th class="r">จำนวน (ชิ้น)</th><th class="r">ยอดเงิน (บ.)</th></tr></thead>
-    <tbody id="snackRank"></tbody>
-  </table></div>
-</div>
-
-<!-- ════════ TAB 3: คลังกัญชา ════════ -->
-<div class="sec" id="inv">
-  <div class="stitle">🌿 Indoor</div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา/G</th><th>สถานะ</th></tr></thead>
-    <tbody id="invIndoor"></tbody>
-  </table></div>
-
-  <div class="stitle">🌳 Outdoor</div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา/G</th><th>สถานะ</th></tr></thead>
-    <tbody id="invOutdoor"></tbody>
-  </table></div>
-
-  <div class="stitle">✂️ ทริม / เศษ / หาง</div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา/G</th><th>สถานะ</th></tr></thead>
-    <tbody id="invTrim"></tbody>
-  </table></div>
-
-  <div class="stitle">📦 อุปกรณ์</div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา</th><th>สถานะ</th></tr></thead>
-    <tbody id="invAcc"></tbody>
-  </table></div>
-</div>
-
-<!-- ════════ TAB 4: คลังขนม ════════ -->
-<div class="sec" id="snack">
-  <div class="mg mg3">
-    <div class="mc"><div class="ml">รายการทั้งหมด</div><div class="mv">39</div><div class="ms">รายการ</div></div>
-    <div class="mc"><div class="ml">หมดสต็อก</div><div class="mv r">2</div><div class="ms">รายการ</div></div>
-    <div class="mc"><div class="ml">ยอดขายขนมรวม</div><div class="mv g">2,342</div><div class="ms">บาท</div></div>
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('sales',this)">📊 ยอดขาย</button>
+    <button class="tab-btn" onclick="showTab('rank',this)">🏆 อันดับสินค้า</button>
+    <button class="tab-btn" onclick="showTab('inv',this)">🌿 คลังกัญชา</button>
+    <button class="tab-btn" onclick="showTab('snackinv',this)">🍬 คลังขนม</button>
   </div>
-  <div class="tw"><table class="st">
-    <thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา</th><th>สถานะ</th></tr></thead>
-    <tbody id="invSnack"></tbody>
-  </table></div>
-</div>
 
-</div><!-- end padding -->
+  <!-- ════ TAB: ยอดขาย ════ -->
+  <div class="sec active" id="sales">
+    <div class="stitle">กราฟยอดขายรายวัน</div>
+    <div class="chart-wrap"><canvas id="dayChart" height="220"></canvas></div>
+    <div class="stitle">ตารางยอดขายรายวัน (ยอดจริง)</div>
+    <div class="tw"><table>
+      <thead><tr><th>วันที่</th><th class="r">เงินสด</th><th class="r">โอน</th><th class="r">ยอดตามระบบ</th><th class="r">ยอดจริง</th></tr></thead>
+      <tbody id="dailyBody"></tbody>
+      <tfoot><tr><td>รวมทั้งหมด</td><td class="r mono">30,185</td><td class="r mono">24,457</td><td class="r mono">54,206</td><td class="r mono">54,642</td></tr></tfoot>
+    </table></div>
+  </div>
 
+  <!-- ════ TAB: อันดับ ════ -->
+  <div class="sec" id="rank">
+    <div class="mg mg3">
+      <div class="mc"><div class="ml">อันดับ 1 ยอดเงิน</div><div class="mv" style="font-size:16px">Super Boof Indoor</div><div class="ms">5,161 บาท</div></div>
+      <div class="mc"><div class="ml">อันดับ 1 จำนวน</div><div class="mv" style="font-size:16px">Super Boof Indoor</div><div class="ms">120.22 G</div></div>
+      <div class="mc"><div class="ml">สินค้าทั้งหมดที่ขาย</div><div class="mv">45+</div><div class="ms">รายการ</div></div>
+    </div>
+
+    <div class="stitle">🌿 Indoor — อันดับตามยอดเงิน</div>
+    <div class="tw"><table><thead><tr><th>#</th><th>ชื่อสินค้า</th><th class="r">จำนวน (G)</th><th class="r">ยอดเงิน (บ.)</th></tr></thead><tbody id="indoorRank"></tbody></table></div>
+
+    <div class="stitle">🌳 Outdoor — อันดับตามยอดเงิน</div>
+    <div class="tw"><table><thead><tr><th>#</th><th>ชื่อสินค้า</th><th class="r">จำนวน (G)</th><th class="r">ยอดเงิน (บ.)</th></tr></thead><tbody id="outdoorRank"></tbody></table></div>
+
+    <div class="stitle">✂️ ทริม / เศษ — อันดับตามยอดเงิน</div>
+    <div class="tw"><table><thead><tr><th>#</th><th>ชื่อสินค้า</th><th class="r">จำนวน (G)</th><th class="r">ยอดเงิน (บ.)</th></tr></thead><tbody id="trimRank"></tbody></table></div>
+
+    <div class="stitle">🍬 ขนม / เครื่องดื่ม — อันดับตามยอดเงิน</div>
+    <div class="tw"><table><thead><tr><th>#</th><th>ชื่อสินค้า</th><th class="r">จำนวน (ชิ้น)</th><th class="r">ยอดเงิน (บ.)</th></tr></thead><tbody id="snackRank"></tbody></table></div>
+  </div>
+
+  <!-- ════ TAB: คลังกัญชา ════ -->
+  <div class="sec" id="inv">
+    <div class="stitle">🌿 Indoor</div>
+    <div class="tw"><table><thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา/G</th><th>สถานะ</th></tr></thead><tbody id="invIndoor"></tbody></table></div>
+
+    <div class="stitle">🌳 Outdoor</div>
+    <div class="tw"><table><thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา/G</th><th>สถานะ</th></tr></thead><tbody id="invOutdoor"></tbody></table></div>
+
+    <div class="stitle">✂️ ทริม / เศษ / หาง</div>
+    <div class="tw"><table><thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา/G</th><th>สถานะ</th></tr></thead><tbody id="invTrim"></tbody></table></div>
+
+    <div class="stitle">📦 อุปกรณ์</div>
+    <div class="tw"><table><thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา</th><th>สถานะ</th></tr></thead><tbody id="invAcc"></tbody></table></div>
+  </div>
+
+  <!-- ════ TAB: คลังขนม ════ -->
+  <div class="sec" id="snackinv">
+    <div class="mg mg3">
+      <div class="mc"><div class="ml">รายการทั้งหมด</div><div class="mv">39</div><div class="ms">รายการ</div></div>
+      <div class="mc"><div class="ml">หมดสต็อก</div><div class="mv r">2</div><div class="ms">รายการ</div></div>
+      <div class="mc"><div class="ml">ยอดขายขนมรวม</div><div class="mv g">2,342</div><div class="ms">บาท</div></div>
+    </div>
+    <div class="tw"><table><thead><tr><th>ชื่อสินค้า</th><th class="r">เริ่ม</th><th class="r">เข้า</th><th class="r">ออก</th><th class="r">คงเหลือ</th><th class="r">ราคา</th><th>สถานะ</th></tr></thead><tbody id="invSnack"></tbody></table></div>
+  </div>
+
+</div><!-- /container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 // ── DATA ──
 const daily = [
-  {d:'1 เม.ย.',c:1240,t:1395,r:2635},{d:'2 เม.ย.',c:710,t:820,r:1530},
-  {d:'3 เม.ย.',c:865,t:620,r:1485},{d:'4 เม.ย.',c:885,t:790,r:1675},
-  {d:'5 เม.ย.',c:1490,t:1325,r:2815},{d:'6 เม.ย.',c:1360,t:942,r:2302},
-  {d:'7 เม.ย.',c:505,t:975,r:1480},{d:'8 เม.ย.',c:1665,t:40,r:1705},
-  {d:'9 เม.ย.',c:1000,t:560,r:1560},{d:'10 เม.ย.',c:530,t:120,r:650},
-  {d:'11 เม.ย.',c:1060,t:885,r:1945},{d:'12 เม.ย.',c:415,t:720,r:1135},
-  {d:'13 เม.ย.',c:1525,t:1015,r:2540},{d:'14 เม.ย.',c:995,t:1930,r:2925},
-  {d:'15 เม.ย.',c:865,t:400,r:1265},{d:'16 เม.ย.',c:670,t:0,r:670},
-  {d:'17 เม.ย.',c:470,t:570,r:1040},{d:'18 เม.ย.',c:880,t:1040,r:1920},
-  {d:'19 เม.ย.',c:1095,t:630,r:1725},{d:'20 เม.ย.',c:560,t:2540,r:3100},
-  {d:'21 เม.ย.',c:790,t:470,r:1260},{d:'22 เม.ย.',c:1885,t:445,r:2330},
-  {d:'23 เม.ย.',c:1190,t:520,r:1710},{d:'24 เม.ย.',c:935,t:1100,r:2035},
-  {d:'25 เม.ย.',c:870,t:880,r:1750},{d:'26 เม.ย.',c:920,t:1140,r:2060},
-  {d:'27 เม.ย.',c:1295,t:605,r:1900},{d:'28 เม.ย.',c:1015,t:565,r:1580},
-  {d:'29 เม.ย.',c:1805,t:825,r:2630},{d:'30 เม.ย.',c:695,t:590,r:1285},
+  {d:'1 เม.ย.',c:1240,t:1395,sys:2529.6,r:2635},
+  {d:'2 เม.ย.',c:710,t:820,sys:1522.7,r:1530},
+  {d:'3 เม.ย.',c:865,t:620,sys:1380.7,r:1485},
+  {d:'4 เม.ย.',c:885,t:790,sys:1674.4,r:1675},
+  {d:'5 เม.ย.',c:1490,t:1325,sys:2811.7,r:2815},
+  {d:'6 เม.ย.',c:1360,t:942,sys:2196.7,r:2302},
+  {d:'7 เม.ย.',c:505,t:975,sys:1482.3,r:1480},
+  {d:'8 เม.ย.',c:1665,t:40,sys:1710.7,r:1705},
+  {d:'9 เม.ย.',c:1000,t:560,sys:1559,r:1560},
+  {d:'10 เม.ย.',c:530,t:120,sys:646.2,r:650},
+  {d:'11 เม.ย.',c:1060,t:885,sys:1945,r:1945},
+  {d:'12 เม.ย.',c:415,t:720,sys:1244,r:1135},
+  {d:'13 เม.ย.',c:1525,t:1015,sys:2537,r:2540},
+  {d:'14 เม.ย.',c:995,t:1930,sys:2995,r:2925},
+  {d:'15 เม.ย.',c:865,t:400,sys:1251,r:1265},
+  {d:'16 เม.ย.',c:670,t:0,sys:666,r:670},
+  {d:'17 เม.ย.',c:470,t:570,sys:1038,r:1040},
+  {d:'18 เม.ย.',c:880,t:1040,sys:1915,r:1920},
+  {d:'19 เม.ย.',c:1095,t:630,sys:1734,r:1725},
+  {d:'20 เม.ย.',c:560,t:2540,sys:3077,r:3100},
+  {d:'21 เม.ย.',c:790,t:470,sys:1259,r:1260},
+  {d:'22 เม.ย.',c:1885,t:445,sys:2326,r:2330},
+  {d:'23 เม.ย.',c:1190,t:520,sys:1709.2,r:1710},
+  {d:'24 เม.ย.',c:935,t:1100,sys:2035,r:2035},
+  {d:'25 เม.ย.',c:870,t:880,sys:1750,r:1750},
+  {d:'26 เม.ย.',c:920,t:1140,sys:2060,r:2060},
+  {d:'27 เม.ย.',c:1295,t:605,sys:1900,r:1900},
+  {d:'28 เม.ย.',c:1015,t:565,sys:1580,r:1580},
+  {d:'29 เม.ย.',c:1805,t:825,sys:2630,r:2630},
+  {d:'30 เม.ย.',c:695,t:590,sys:1285,r:1285},
 ];
 
-const indoor = [
-  {n:'Super Boof Indoor',qty:120.22,rev:5161},{n:'Black Diamond Indoor',qty:95.4,rev:4126},
-  {n:'ICC',qty:84,rev:3550},{n:'Miami Mango Indoor',qty:62.92,rev:2749.7},
-  {n:'Runtz Layer Cake Indoor',qty:59.6,rev:2730},{n:'Black Berry Oreo Big Stuff Indoor',qty:50.4,rev:2190},
-  {n:'Runtz Muffin Indoor',qty:48.7,rev:2096.5},{n:'Platinum Indoor',qty:49.8,rev:1990},
-  {n:'Oreo Big Stum Indoor',qty:41.5,rev:1800},{n:'Gelato Cookie Indoor',qty:4,rev:160},
-  {n:'Miami Indoor',qty:14.7,rev:735},{n:'King Bing Indoor',qty:8,rev:400},
-  {n:'Vice City Indoor',qty:8.3,rev:373.5},{n:'Dante Inferno Indoor',qty:14,rev:560},
+const indoor=[
+  {n:'Super Boof Indoor',qty:120.22,rev:5161},
+  {n:'Black Diamond Indoor',qty:95.4,rev:4126},
+  {n:'ICC',qty:84,rev:3550},
+  {n:'Miami Mango Indoor',qty:62.92,rev:2749.7},
+  {n:'Runtz Layer Cake Indoor',qty:59.6,rev:2730},
+  {n:'Black Berry Oreo Big Stuff Indoor',qty:50.4,rev:2190},
+  {n:'Runtz Muffin Indoor',qty:48.7,rev:2096.5},
+  {n:'Platinum Indoor',qty:49.8,rev:1990},
+  {n:'Oreo Big Stum Indoor',qty:41.5,rev:1800},
+  {n:'Miami Indoor',qty:14.7,rev:735},
+  {n:'Dante Inferno Indoor',qty:14,rev:560},
+  {n:'King Bing Indoor',qty:8,rev:400},
+  {n:'Gelato Cookie Indoor',qty:4,rev:160},
+  {n:'Vice City Indoor',qty:8.3,rev:373.5},
 ];
 
-const outdoor = [
-  {n:'Outdoor Superboof',qty:55,rev:1823},{n:'Outdoor Sugar Sho',qty:37.56,rev:1271.1},
-  {n:'Outdoor Miami Mango',qty:32.42,rev:1074.7},{n:'Outdoor Tropicana Cherry',qty:31.57,rev:949},
-  {n:'Outdoor Mummy Milk',qty:27.68,rev:932.8},{n:'Outdoor Apple Banana',qty:20.08,rev:703},
-  {n:'Outdoor Lemon Super',qty:15.22,rev:532.7},{n:'Outdoor Supreme Oreoz',qty:23.04,rev:806.4},
-  {n:'Outdoor Frozen Black',qty:15.84,rev:554.4},{n:'Outdoor Treat Beat',qty:10.92,rev:382.2},
-  {n:'Outdoor LA Banana Cake',qty:12,rev:420},{n:'Outdoor Bluecherry Robster',qty:23.57,rev:825},
-  {n:'End Game Outdoor',qty:11,rev:385},{n:'Lemon Orange Outdoor',qty:1.42,rev:49.7},
+const outdoor=[
+  {n:'Outdoor Superboof',qty:55,rev:1823},
+  {n:'Outdoor Bluecherry Robster',qty:23.57,rev:825},
+  {n:'Outdoor Sugar Sho',qty:37.56,rev:1271.1},
+  {n:'Outdoor Supreme Oreoz',qty:23.04,rev:806.4},
+  {n:'Outdoor Miami Mango',qty:32.42,rev:1074.7},
+  {n:'Outdoor Tropicana Cherry',qty:31.57,rev:949},
+  {n:'Outdoor Mummy Milk',qty:27.68,rev:932.8},
+  {n:'Outdoor LA Banana Cake',qty:12,rev:420},
+  {n:'End Game Outdoor',qty:11,rev:385},
+  {n:'Outdoor Apple Banana',qty:20.08,rev:703},
+  {n:'Outdoor Frozen Black',qty:15.84,rev:554.4},
+  {n:'Outdoor Lemon Super',qty:15.22,rev:532.7},
+  {n:'Outdoor Treat Beat',qty:10.92,rev:382.2},
+  {n:'Lemon Orange Outdoor',qty:1.42,rev:49.7},
 ];
 
-const trim = [
-  {n:'เศษดอก Black Diamond',qty:101.73,rev:2325.5},{n:'ทริมเศษดอก Superboof (พาวเดอร์)',qty:70.92,rev:1493.8},
-  {n:'ทริมเศษดอก Strawberry',qty:66.6,rev:1440},{n:'ทริมเทพ Superboof',qty:52.55,rev:1126.5},
-  {n:'หางกระรอก สด',qty:105,rev:1050},{n:'ทริม Tropicana',qty:41.5,rev:890},
-  {n:'ทริม Superboof',qty:33.6,rev:840},{n:'ทริม Black Diamond',qty:42.8,rev:856},
-  {n:'ทริม ICC',qty:41.6,rev:832},{n:'ทริม รั้นเขียว',qty:25.2,rev:504},
-  {n:'เศษดอก Runtz Muffin',qty:11.32,rev:339.6},{n:'ทริม Miami',qty:10,rev:250},
-  {n:'เศษดอก Cookie Gelato',qty:7.26,rev:217.8},{n:'เศษดอก ICC',qty:5,rev:150},
-  {n:'หางกระรอก แห้ง',qty:15,rev:75},{n:'ทริม Miami 15',qty:10.26,rev:153.9},
-  {n:'อัดแท่ง 20 G',qty:5,rev:500},{n:'ทริม Runtz Muffin',qty:29,rev:580},
+const trim=[
+  {n:'เศษดอก Black Diamond',qty:101.73,rev:2325.5},
+  {n:'ทริมเศษดอก Superboof (พาวเดอร์)',qty:70.92,rev:1493.8},
+  {n:'ทริมเศษดอก Strawberry',qty:66.6,rev:1440},
+  {n:'ทริมเทพ Superboof',qty:52.55,rev:1126.5},
+  {n:'หางกระรอก สด',qty:105,rev:1050},
+  {n:'ทริม Tropicana',qty:41.5,rev:890},
+  {n:'ทริม Black Diamond',qty:42.8,rev:856},
+  {n:'ทริม ICC',qty:41.6,rev:832},
+  {n:'ทริม Superboof',qty:33.6,rev:840},
+  {n:'ทริม Runtz Muffin',qty:29,rev:580},
+  {n:'อัดแท่ง 20 G',qty:5,rev:500},
+  {n:'ทริม รั้นเขียว',qty:25.2,rev:504},
+  {n:'เศษดอก Runtz Muffin',qty:11.32,rev:339.6},
+  {n:'เศษดอก Cookie Gelato',qty:7.26,rev:217.8},
+  {n:'ทริม Miami',qty:10,rev:250},
+  {n:'เศษดอก ICC',qty:5,rev:150},
+  {n:'ทริม Miami 15',qty:10.26,rev:153.9},
+  {n:'หางกระรอก แห้ง',qty:15,rev:75},
 ];
 
-const snackRankData = [
+const snackRankData=[
   {n:'อิชิตัน ชาเขียว องุ่นเคียวโฮ 280ml',qty:51,rev:510},
   {n:'อิชิตัน ชาเขียว น้ำผึ้งมะนาว 280ml',qty:41,rev:410},
   {n:'เนสท์เล่ เพียวไลฟ์ น้ำดื่ม 600ml',qty:27,rev:270},
@@ -221,60 +302,62 @@ const snackRankData = [
   {n:'เป๊ปซี่ น้ำอัดลม 345ml',qty:8,rev:104},
   {n:'สไปรท์ เลมอนไลม์ 330ml',qty:8,rev:104},
   {n:'แฟนต้า กลิ่นส้ม 1.25L',qty:3,rev:90},
-  {n:'เลย์',qty:3,rev:60},{n:'เป๊ปซี่ น้ำอัดลม 1.26L',qty:2,rev:60},
-  {n:'เจอรี่ ครันชี่โรล',qty:11,rev:55},{n:'ตูมตาม บาร์บีคิว 23g',qty:10,rev:50},
-  {n:'บันบัน',qty:2,rev:40},{n:'ปาปริก้า',qty:7,rev:35},
+  {n:'เป๊ปซี่ น้ำอัดลม 1.26L',qty:2,rev:60},
+  {n:'เลย์',qty:3,rev:60},
+  {n:'เจอรี่ ครันชี่โรล',qty:11,rev:55},
+  {n:'ตูมตาม บาร์บีคิว 23g',qty:10,rev:50},
+  {n:'บันบัน',qty:2,rev:40},
+  {n:'ปาปริก้า',qty:7,rev:35},
 ];
 
-// inventory
-const invIndoor = [
-  {n:'Super Boof Indoor',s:50,i:100,o:120.22,r:29.78,p:50},
+const invIndoor=[
   {n:'Miami Mango Indoor',s:22.6,i:100,o:65.92,r:56.68,p:50},
-  {n:'ICC',s:50,i:50,o:84,r:16,p:50},
-  {n:'Runtz Layer Cake Indoor',s:44.3,i:50,o:59.6,r:34.7,p:50},
-  {n:'Black Berry Oreo Big Stuff Indoor',s:14.7,i:50,o:50.4,r:14.3,p:50},
-  {n:'Platinum Indoor',s:24,i:50,o:49.8,r:24.2,p:50},
-  {n:'Runtz Muffin Indoor',s:84.2,i:0,o:48.7,r:35.5,p:45},
+  {n:'Super Boof Indoor',s:50,i:100,o:120.22,r:29.78,p:50},
   {n:'Gelato Cookie Indoor',s:50,i:0,o:4,r:46,p:40},
-  {n:'Black Diamond Indoor',s:45.4,i:50,o:95.4,r:0,p:50},
-  {n:'Oreo Big Stum Indoor',s:49.3,i:0,o:44,r:5.3,p:50},
+  {n:'Runtz Layer Cake Indoor',s:44.3,i:50,o:59.6,r:34.7,p:50},
+  {n:'Runtz Muffin Indoor',s:84.2,i:0,o:48.7,r:35.5,p:45},
+  {n:'Platinum Indoor',s:24,i:50,o:49.8,r:24.2,p:50},
+  {n:'Black Berry Oreo Big Stuff Indoor',s:14.7,i:50,o:50.4,r:14.3,p:50},
+  {n:'ICC',s:50,i:50,o:84,r:16,p:50},
   {n:'Miami Indoor',s:26,i:0,o:14.7,r:11.3,p:50},
   {n:'King Bing Indoor',s:20,i:0,o:8,r:12,p:50},
   {n:'Vice City Indoor',s:15.2,i:0,o:8.3,r:6.9,p:45},
+  {n:'Oreo Big Stum Indoor',s:49.3,i:0,o:44,r:5.3,p:50},
   {n:'Dante Inferno Indoor',s:18.4,i:0,o:14,r:4.4,p:40},
+  {n:'Black Diamond Indoor',s:45.4,i:50,o:95.4,r:0,p:50},
 ].sort((a,b)=>b.r-a.r);
 
-const invOutdoor = [
-  {n:'Outdoor Sugar Sho',s:39,i:50,o:37.56,r:51.44,p:33},
-  {n:'Outdoor Miami Mango',s:27.5,i:50,o:32.42,r:45.08,p:35},
-  {n:'Outdoor Mummy Milk',s:15.1,i:50,o:27.68,r:37.42,p:35},
+const invOutdoor=[
   {n:'Grand Master Sexy Outdoor',s:50,i:0,o:0,r:50,p:35},
   {n:'Plat Marker Outdoor',s:50,i:0,o:0,r:50,p:35},
-  {n:'Outdoor Superboof',s:50,i:50,o:55,r:45,p:35},
-  {n:'Outdoor Treat Beat',s:58.3,i:0,o:10.92,r:47.38,p:35},
+  {n:'Outdoor Sugar Sho',s:39,i:50,o:37.56,r:51.44,p:33},
   {n:'Lemon Orange Outdoor',s:50,i:0,o:1.42,r:48.58,p:35},
+  {n:'Outdoor Treat Beat',s:58.3,i:0,o:10.92,r:47.38,p:35},
+  {n:'Outdoor Superboof',s:50,i:50,o:55,r:45,p:35},
   {n:'Outdoor Supreme Oreoz',s:72.8,i:0,o:23.04,r:49.76,p:35},
+  {n:'Outdoor Miami Mango',s:27.5,i:50,o:32.42,r:45.08,p:35},
   {n:'End Game Outdoor',s:50,i:0,o:11,r:39,p:35},
+  {n:'Outdoor Mummy Milk',s:15.1,i:50,o:27.68,r:37.42,p:35},
   {n:'Outdoor LA Banana Cake',s:36,i:0,o:12,r:24,p:35},
-  {n:'Outdoor Frozen Black',s:39,i:0,o:15.84,r:23.16,p:35},
   {n:'Outdoor Lemon Super',s:41,i:0,o:15.22,r:25.78,p:35},
+  {n:'Outdoor Frozen Black',s:39,i:0,o:15.84,r:23.16,p:35},
   {n:'Outdoor Tropicana Cherry',s:52.8,i:0,o:31.57,r:21.23,p:20},
   {n:'Outdoor Apple Banana',s:34.1,i:0,o:20.08,r:14.02,p:35},
   {n:'Outdoor Bluecherry Robster',s:25,i:0,o:23.57,r:1.43,p:35},
 ].sort((a,b)=>b.r-a.r);
 
-const invTrim = [
+const invTrim=[
   {n:'หางกระรอก แห้ง',s:136.9,i:0,o:15,r:121.9,p:5},
-  {n:'ทริม Runtz Muffin',s:100,i:0,o:29,r:71,p:20},
+  {n:'เศษดอก ICC',s:100,i:0,o:5,r:95,p:30},
+  {n:'เศษดอก Cookie Gelato',s:100,i:0,o:7.26,r:92.74,p:30},
   {n:'ทริมเศษดอก Strawberry',s:140,i:0,o:66.6,r:73.4,p:25},
+  {n:'ทริม Runtz Muffin',s:100,i:0,o:29,r:71,p:20},
   {n:'ทริม รั้นเขียว',s:90.4,i:0,o:25.2,r:65.2,p:20},
   {n:'เศษดอก Black Diamond',s:72.04,i:89,o:101.73,r:59.31,p:30},
   {n:'ทริม Black Diamond',s:95.5,i:0,o:42.8,r:52.7,p:20},
   {n:'ทริม Superboof',s:89.9,i:0,o:33.6,r:56.3,p:25},
   {n:'ทริม ICC',s:95.1,i:0,o:41.6,r:53.5,p:20},
   {n:'ทริมเศษดอก Superboof (พาวเดอร์)',s:120,i:0,o:70.92,r:49.08,p:20},
-  {n:'เศษดอก Cookie Gelato',s:100,i:0,o:7.26,r:92.74,p:30},
-  {n:'เศษดอก ICC',s:100,i:0,o:5,r:95,p:30},
   {n:'หางกระรอก สด',s:142.4,i:0,o:105,r:37.4,p:10},
   {n:'ทริม Tropicana',s:55,i:0,o:41.5,r:13.5,p:20},
   {n:'เศษดอก Runtz Muffin',s:31.6,i:0,o:11.32,r:20.28,p:30},
@@ -284,33 +367,33 @@ const invTrim = [
   {n:'อัดแท่ง 20 G',s:5,i:0,o:5,r:0,p:100},
 ].sort((a,b)=>b.r-a.r);
 
-const invAcc = [
+const invAcc=[
   {n:'Lighter (ไฟแช็ก)',s:97,i:0,o:4,r:93,p:10},
   {n:'Misty',s:88,i:0,o:17,r:71,p:15},
-  {n:'กรองกระดาษ RAW',s:37,i:0,o:0,r:37,p:50},
   {n:'กระดาษโรล ดั้งเดิม',s:40,i:0,o:0,r:40,p:20},
+  {n:'กรองกระดาษ RAW',s:37,i:0,o:0,r:37,p:50},
+  {n:'เบงเบง เวเฟอร์',s:37,i:0,o:4,r:33,p:5},
   {n:'OHIS',s:35,i:0,o:4,r:31,p:15},
   {n:'โจ๋แก้วใหญ่',s:27,i:0,o:0,r:27,p:100},
   {n:'ดอแก้ว 13 เซน',s:26,i:0,o:0,r:26,p:60},
-  {n:'ดอแก้ว 14 เซน',s:23,i:0,o:0,r:23,p:80},
-  {n:'BROS',s:44,i:0,o:21,r:23,p:25},
   {n:'กระดาษ RAW',s:22,i:0,o:0,r:22,p:50},
+  {n:'ดอแก้ว 14 เซน',s:23,i:0,o:0,r:23,p:80},
   {n:'ดอแก้ว 15 เซน',s:19,i:0,o:0,r:19,p:100},
   {n:'โจ๋แก้วเล็ก',s:23,i:0,o:4,r:19,p:80},
   {n:'แผ่นลองใหญ่',s:15,i:0,o:0,r:15,p:25},
   {n:'หวีดแก้วหูยาว',s:15,i:0,o:1,r:14,p:50},
   {n:'Toppuff',s:17,i:0,o:4,r:13,p:50},
-  {n:'Grider',s:10,i:0,o:0,r:10,p:60},
-  {n:'กระดาษโรล สั้น',s:21,i:0,o:12,r:9,p:10},
-  {n:'ดอแก้ว 16 เซน',s:8,i:0,o:1,r:7,p:120},
-  {n:'ที่กรอง+สาย',s:7,i:0,o:0,r:7,p:120},
-  {n:'ดอแก้ว 10CM',s:7,i:0,o:0,r:7,p:40},
-  {n:'กระดาษโรล องุ่น',s:6,i:0,o:0,r:6,p:20},
-  {n:'Hand Muller Grider',s:5,i:0,o:0,r:5,p:50},
   {n:'Grider Plastic',s:12,i:0,o:0,r:12,p:60},
   {n:'ถาด',s:12,i:0,o:0,r:12,p:35},
   {n:'GAS',s:13,i:0,o:1,r:12,p:40},
+  {n:'Grider',s:10,i:0,o:0,r:10,p:60},
+  {n:'กระดาษโรล สั้น',s:21,i:0,o:12,r:9,p:10},
   {n:'แผ่นลองเล็ก',s:8,i:0,o:0,r:8,p:20},
+  {n:'ดอแก้ว 16 เซน',s:8,i:0,o:1,r:7,p:120},
+  {n:'ดอแก้ว 10CM',s:7,i:0,o:0,r:7,p:40},
+  {n:'ที่กรอง+สาย',s:7,i:0,o:0,r:7,p:120},
+  {n:'กระดาษโรล องุ่น',s:6,i:0,o:0,r:6,p:20},
+  {n:'Hand Muller Grider',s:5,i:0,o:0,r:5,p:50},
   {n:'Pipes',s:2,i:0,o:0,r:2,p:80},
   {n:'บ้อง สีม่วง',s:1,i:0,o:0,r:1,p:1300},
   {n:'บ้อง Rick Morty',s:1,i:0,o:0,r:1,p:1000},
@@ -319,31 +402,32 @@ const invAcc = [
   {n:'ดอแก้้ว 12 CM',s:1,i:0,o:1,r:0,p:50},
 ].sort((a,b)=>b.r-a.r);
 
-const invSnack = [
-  {n:'เป๊ปซี่ น้ำอัดลม 1.26L',s:33,i:0,o:2,r:31,p:30},
+const invSnack=[
   {n:'โค้ก น้ำอัดลม 1.25L + 250ml',s:50,i:0,o:0,r:50,p:30},
+  {n:'เป๊ปซี่ น้ำอัดลม 345ml',s:47,i:0,o:8,r:39,p:13},
   {n:'คอนเน่ 48g',s:35,i:0,o:0,r:35,p:20},
-  {n:'ทวิสโก้ บาร์บีคิว',s:19,i:0,o:0,r:19,p:5},
-  {n:'อิชิตัน ชาเขียว น้ำผึ้งมะนาว 280ml',s:69,i:0,o:41,r:28,p:10},
+  {n:'เป๊ปซี่ น้ำอัดลม 1.26L',s:33,i:0,o:2,r:31,p:30},
   {n:'เนสท์เล่ เพียวไลฟ์ น้ำดื่ม 600ml',s:55,i:0,o:27,r:28,p:10},
+  {n:'อิชิตัน ชาเขียว น้ำผึ้งมะนาว 280ml',s:69,i:0,o:41,r:28,p:10},
   {n:'แฟนต้า กลิ่นส้ม 1.25L',s:27,i:0,o:3,r:24,p:30},
-  {n:'คาราด้า ห่อใหญ่',s:7,i:0,o:0,r:7,p:20},
-  {n:'เบงเบง เวเฟอร์',s:37,i:0,o:4,r:33,p:5},
-  {n:'ซีมอน ซีเรียล 17g',s:21,i:0,o:5,r:16,p:5},
-  {n:'โค้ก น้ำอัดลม 590ml',s:21,i:0,o:5,r:16,p:19},
-  {n:'อิชิตัน ชาเขียว องุ่นเคียวโฮ 280ml',s:69,i:0,o:54,r:15,p:10},
+  {n:'ทวิสโก้ บาร์บีคิว',s:19,i:0,o:0,r:19,p:5},
   {n:'สไปรท์ เลมอนไลม์ 330ml',s:26,i:0,o:8,r:18,p:13},
+  {n:'ปาปริก้า',s:24,i:0,o:7,r:17,p:5},
+  {n:'โค้ก น้ำอัดลม 590ml',s:21,i:0,o:5,r:16,p:19},
+  {n:'ซีมอน ซีเรียล 17g',s:21,i:0,o:5,r:16,p:5},
+  {n:'อิชิตัน ชาเขียว องุ่นเคียวโฮ 280ml',s:69,i:0,o:54,r:15,p:10},
   {n:'แฟนต้า สตรอเบอร์รี่ 330ml',s:24,i:0,o:9,r:15,p:13},
   {n:'ซีมอน ธัญพืชครีม',s:20,i:0,o:5,r:15,p:5},
+  {n:'เบนโตะห่อเล็ก',s:13,i:0,o:1,r:12,p:5},
   {n:'เลย์ โนริสาหร่าย 48g',s:12,i:0,o:0,r:12,p:20},
   {n:'เลย์ เมี่ยงคำ',s:12,i:0,o:0,r:12,p:20},
-  {n:'ปาปริก้า',s:24,i:0,o:7,r:17,p:5},
+  {n:'แคมปัส ช็อกโกแลต',s:11,i:0,o:0,r:11,p:5},
   {n:'เลย์ร็อค กุ้งเผา',s:10,i:0,o:0,r:10,p:20},
   {n:'ตูมตาม บาร์บีคิว 23g',s:19,i:0,o:10,r:9,p:20},
+  {n:'ตะวัน รสกุ้ง',s:9,i:0,o:1,r:8,p:5},
   {n:'เลย์ร็อค บาร์บีคิว 48g',s:12,i:0,o:1,r:11,p:20},
   {n:'โดโซะ รสเนย 80g',s:8,i:0,o:0,r:8,p:20},
-  {n:'เป๊ปซี่ น้ำอัดลม 345ml',s:47,i:0,o:8,r:39,p:13},
-  {n:'ตะวัน รสกุ้ง',s:9,i:0,o:1,r:8,p:5},
+  {n:'แผ่นลองเล็ก',s:8,i:0,o:0,r:8,p:20},
   {n:'ซีมอน ซีเรียล 75g',s:6,i:0,o:1,r:5,p:20},
   {n:'คอปป์ ซีเรียล 70g',s:6,i:0,o:1,r:5,p:20},
   {n:'ปาร์ตี้ ครองแครง',s:6,i:0,o:1,r:5,p:10},
@@ -355,8 +439,6 @@ const invSnack = [
   {n:'บันบัน',s:4,i:0,o:2,r:2,p:20},
   {n:'ซันไบทส์',s:2,i:0,o:1,r:1,p:20},
   {n:'เลย์',s:4,i:0,o:3,r:1,p:20},
-  {n:'เบนโตะห่อเล็ก',s:13,i:0,o:1,r:12,p:5},
-  {n:'แคมปัส ช็อกโกแลต',s:11,i:0,o:0,r:11,p:5},
   {n:'เจอรี่ ครันชี่โรล',s:11,i:0,o:11,r:0,p:5},
   {n:'เอสโคล่า 30 บาท',s:1,i:0,o:1,r:0,p:30},
 ].sort((a,b)=>b.r-a.r);
@@ -367,31 +449,58 @@ function badge(r){
   if(r<5) return '<span class="bd low">เหลือน้อย</span>';
   return '<span class="bd ok">ปกติ</span>';
 }
-function fmtR(v){
-  const n=parseFloat(v);
-  if(n<0) return `<span class="neg">${n}</span>`;
-  return n%1===0?n:n;
-}
+function fmtR(v){const n=parseFloat(v);return n<0?`<span class="neg">${n}</span>`:String(n);}
 function rkBadge(i){
   if(i===0) return '<span class="rk g1">1</span>';
   if(i===1) return '<span class="rk g2">2</span>';
   if(i===2) return '<span class="rk g3">3</span>';
   return `<span class="rk">${i+1}</span>`;
 }
+function n(v){return parseFloat(v)%1===0?parseInt(v):parseFloat(v);}
 
-// ── RENDER ──
-// Daily table
-const db = document.getElementById('dailyBody');
+// ── RENDER DAILY ──
+const db=document.getElementById('dailyBody');
 daily.forEach(r=>{
-  db.innerHTML+=`<tr><td>${r.d}</td><td class="r">${r.c.toLocaleString()}</td><td class="r">${r.t.toLocaleString()}</td><td class="r">${r.r.toLocaleString()}</td></tr>`;
+  db.innerHTML+=`<tr>
+    <td>${r.d}</td>
+    <td class="r mono">${r.c.toLocaleString()}</td>
+    <td class="r mono">${r.t.toLocaleString()}</td>
+    <td class="r mono">${r.sys.toLocaleString()}</td>
+    <td class="r mono">${r.r.toLocaleString()}</td>
+  </tr>`;
 });
 
-// Rank tables
+// ── CHART ──
+new Chart(document.getElementById('dayChart'),{
+  type:'bar',
+  data:{
+    labels:daily.map(r=>r.d),
+    datasets:[
+      {label:'เงินสด',data:daily.map(r=>r.c),backgroundColor:'#00d97e',borderRadius:3},
+      {label:'โอน',data:daily.map(r=>r.t),backgroundColor:'#1a4d36',borderRadius:3},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{stacked:true,ticks:{font:{size:9},color:'#454d65',maxRotation:45},grid:{color:'#161921'}},
+      y:{stacked:true,ticks:{font:{size:10},color:'#454d65'},grid:{color:'#161921'}}
+    }
+  }
+});
+
+// ── RANK TABLES ──
 function renderRank(data,bodyId,unit='G'){
-  const s=data.sort((a,b)=>b.rev-a.rev);
+  const s=[...data].sort((a,b)=>b.rev-a.rev);
   const b=document.getElementById(bodyId);
   s.forEach((r,i)=>{
-    b.innerHTML+=`<tr><td>${rkBadge(i)}</td><td>${r.n}</td><td class="r">${r.qty}${unit}</td><td class="r">${r.rev.toLocaleString()}</td></tr>`;
+    b.innerHTML+=`<tr>
+      <td>${rkBadge(i)}</td>
+      <td>${r.n}</td>
+      <td class="r mono">${r.qty}${unit}</td>
+      <td class="r mono">${r.rev.toLocaleString()}</td>
+    </tr>`;
   });
 }
 renderRank(indoor,'indoorRank');
@@ -399,17 +508,17 @@ renderRank(outdoor,'outdoorRank');
 renderRank(trim,'trimRank');
 renderRank(snackRankData,'snackRank','ชิ้น');
 
-// Inventory
+// ── INV TABLES ──
 function renderInv(data,bodyId){
   const b=document.getElementById(bodyId);
   data.forEach(r=>{
     b.innerHTML+=`<tr>
       <td>${r.n}</td>
-      <td class="r">${r.s}</td>
-      <td class="r">${r.i}</td>
-      <td class="r">${r.o}</td>
-      <td class="r">${fmtR(r.r)}</td>
-      <td class="r">${r.p}</td>
+      <td class="r mono">${n(r.s)}</td>
+      <td class="r mono">${n(r.i)}</td>
+      <td class="r mono">${n(r.o)}</td>
+      <td class="r mono">${fmtR(r.r)}</td>
+      <td class="r mono">${r.p}</td>
       <td>${badge(r.r)}</td>
     </tr>`;
   });
@@ -420,11 +529,13 @@ renderInv(invTrim,'invTrim');
 renderInv(invAcc,'invAcc');
 renderInv(invSnack,'invSnack');
 
-// Tab switcher
+// ── TABS ──
 function showTab(id,el){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   el.classList.add('active');
 }
 </script>
+</body>
+</html>
